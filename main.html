@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600&display=swap" rel="stylesheet">
+<title>Preston // Security & Dev</title>
+<style>
+  :root {
+    --accent:     #00e5ff; /* Cyber Cyan */
+    --accent-dim: #007799;
+    --green:      #00ff88;
+    --bg:         #060608;
+    --bg2:        #0d0d12;
+    --bg3:        #12121a;
+    --border:     #1e1e2e;
+    --text:       #c8c8d8;
+    --dim:        #555566;
+    --mono:       'Share Tech Mono', monospace;
+    --display:    'Orbitron', sans-serif;
+    --body:       'Rajdhani', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--body);
+    font-size: 17px;
+    line-height: 1.7;
+    overflow-x: hidden;
+    /* Standard cursor restored */
+  }
+
+  /* Scanline Overlay */
+  body::before {
+    content: ''; position: fixed; inset: 0;
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.1) 2px, rgba(0,0,0,0.1) 4px);
+    pointer-events: none; z-index: 9999;
+  }
+
+  /* Nav */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px; height: 60px;
+    background: rgba(6,6,8,0.92); border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(12px);
+  }
+  .nav-logo {
+    font-family: var(--display); font-size: 14px; font-weight: 900;
+    color: var(--accent); letter-spacing: 3px; text-transform: uppercase;
+  }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a {
+    font-family: var(--mono); font-size: 12px; color: var(--dim);
+    text-decoration: none; letter-spacing: 2px; text-transform: uppercase; transition: 0.2s;
+  }
+  .nav-links a:hover { color: var(--green); }
+
+  /* Hero */
+  #hero {
+    min-height: 100vh; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; text-align: center;
+    padding: 100px 40px 60px; position: relative; overflow: hidden;
+  }
+  #hero::before {
+    content: ''; position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%); width: 700px; height: 700px;
+    background: radial-gradient(ellipse, rgba(0,229,255,0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .glitch-title {
+    font-family: var(--display); font-size: clamp(40px, 10vw, 100px);
+    font-weight: 900; color: #fff; margin-bottom: 10px;
+  }
+  .accent-text { color: var(--accent); }
+  .hero-sub {
+    font-family: var(--mono); font-size: 14px; letter-spacing: 6px;
+    color: var(--dim); text-transform: uppercase; margin-bottom: 40px;
+  }
+
+  /* Sections */
+  section { padding: 100px 40px; max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 5px;
+    color: var(--accent); margin-bottom: 12px; display: flex; align-items: center; gap: 12px;
+  }
+  .section-label::after { content: ''; flex: 1; max-width: 60px; height: 1px; background: var(--accent-dim); }
+
+  /* Grid & Cards */
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+  .card {
+    background: var(--bg2); border: 1px solid var(--border); padding: 35px;
+    transition: 0.3s; position: relative;
+  }
+  .card:hover { border-color: var(--accent-dim); transform: translateY(-5px); background: var(--bg3); }
+  .card h3 { font-family: var(--display); font-size: 16px; color: #fff; margin-bottom: 15px; }
+  .card p { font-size: 15px; color: var(--dim); margin-bottom: 20px; }
+
+  /* Terminal Style */
+  .terminal {
+    background: #000; border: 1px solid var(--border);
+    padding: 25px; font-family: var(--mono); color: var(--green);
+    border-left: 3px solid var(--accent);
+  }
+
+  /* Tags */
+  .tag {
+    display: inline-block; padding: 4px 12px; font-family: var(--mono);
+    font-size: 11px; border: 1px solid var(--border); color: var(--accent);
+    margin-right: 8px; text-transform: uppercase;
+  }
+
+  footer {
+    padding: 60px 40px; border-top: 1px solid var(--border);
+    text-align: center; font-family: var(--mono); font-size: 12px; color: var(--dim);
+  }
+
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    section { padding: 60px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Preston<span>_</span>Dev</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<div id="hero">
+  <div class="hero-sub">Identification / 0x01</div>
+  <h1 class="glitch-title">PRESTON<span class="accent-text">.SYS</span></h1>
+  <p style="max-width: 600px; color: var(--text); font-weight: 300;">Security Researcher & Full-Stack Architect. Building tools that bridge the gap between network defense and modern web capabilities.</p>
+</div>
+
+<section id="about">
+  <p class="section-label">01 // IDENTITY</p>
+  <div class="terminal">
+    <div><span style="color: var(--accent)">preston@network:~$</span> cat biography.txt</div>
+    <div style="margin-top: 15px; color: #fff;">
+      I specialize in developing modular security frameworks and high-performance applications. 
+      My work focuses on automated deployment, encrypted tunneling, and defensive architecture.
+    </div>
+    <div style="margin-top: 10px;">
+      <span style="color: var(--accent)">> Skills:</span> React, Node.js, Bash, Python, Cloudflare, PHP.
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <p class="section-label">02 // REPOSITORIES</p>
+  <div class="grid">
+    <div class="card">
+      <h3>PBK</h3>
+      <p>Advanced Admin Panel Finder: A high-speed reconnaissance framework for Kali Linux designed to identify administrative login interfaces and hidden control panels via dictionary-based discovery.
+
+</p>
+      <span class="tag">Security</span><span class="tag">Bash</span><span class="tag">PHP</span>
+    </div>
+    <div class="card">
+      <h3>Eww</h3>
+      <p>My private RECON tool, forfinding victims</p>
+      <span class="tag">Bash</span><span class="tag">PRIVATE-NOT OPEN SOURCED</span>
+    </div>
+    <div class="card">
+      <h3>Protein</h3>
+      <p>JUST KNOW ITS GOING TO BE SUPER, I AM ON THE PATH OF FIXING BUGS, Its something like Pegasus</p>
+      <span class="tag">Backend</span><span class="tag">TS</span>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <p class="section-label">03 // UPLINK</p>
+  <div style="text-align: center; padding: 40px; border: 1px dashed var(--border);">
+    <h2 style="font-family: var(--display); color: #fff; margin-bottom: 20px;">READY FOR DEPLOYMENT</h2>
+    <p style="margin-bottom: 30px;">Currently accepting collaborations on open-source security tools.</p>
+    <a href="mailto:preston@example.com" style="text-decoration: none; color: var(--accent); font-family: var(--mono); border: 1px solid var(--accent); padding: 10px 25px;">INITIATE_CONTACT</a>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2026 PRESTON_SYS // PRESTON🧐 // ALL PACKETS ENCRYPTED</p>
+</footer>
+
+</body>
+</html>
